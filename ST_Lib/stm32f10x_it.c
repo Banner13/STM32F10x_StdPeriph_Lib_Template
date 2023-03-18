@@ -131,8 +131,10 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
+extern uint32_t g_huke_sysTick;
 void SysTick_Handler(void)
 {
+	if (g_huke_sysTick) g_huke_sysTick--;
 }
 
 /******************************************************************************/

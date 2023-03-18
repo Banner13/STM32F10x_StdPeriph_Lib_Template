@@ -22,9 +22,9 @@ SET(EXECUTABLE_OUTPUT_PATH ${ProjDirPath}/${CMAKE_BUILD_TYPE})
 SET(LIBRARY_OUTPUT_PATH ${ProjDirPath}/${CMAKE_BUILD_TYPE})
 
 
-project(hello_world)
+project(DEMO)
 
-set(MCUX_SDK_PROJECT_NAME hello_world.elf)
+set(MCUX_SDK_PROJECT_NAME DEMO.elf)
 
 if (NOT DEFINED SdkRootDirPath)
     SET(SdkRootDirPath ${ProjDirPath}/..)
@@ -41,10 +41,12 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 
 set(CMAKE_MODULE_PATH
     ${SdkRootDirPath}/ST_Lib
+    ${SdkRootDirPath}/Project
 )
 
 # include modules
 include(device_STM32F103C6_startup)
+include(My_Project)
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
