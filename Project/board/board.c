@@ -10,10 +10,10 @@
  * ****************************************************************************/
 static inline void HUKE_RCC_Init()
 {
-    /*
+
     RCC_ClocksTypeDef clocksTypeDef;
     RCC_GetClocksFreq(&clocksTypeDef);
-    */
+    RCC_GetClocksFreq(&clocksTypeDef);
     /* There is nothing to do, 
         as this is done in the bootloader's SystemInit function.
         72MHz
@@ -52,13 +52,14 @@ static inline void HUKE_SPI_Init()
 
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
-    SPI_InitStruct.SPI_Direction            = SPI_Direction_1Line_Tx;
+    SPI_I2S_DeInit(SPI1);
+    SPI_InitStruct.SPI_Direction            = SPI_Direction_2Lines_FullDuplex;
     SPI_InitStruct.SPI_Mode                 = SPI_Mode_Master;
     SPI_InitStruct.SPI_DataSize             = SPI_DataSize_8b;
     SPI_InitStruct.SPI_CPOL                 = SPI_CPOL_Low;
     SPI_InitStruct.SPI_CPHA                 = SPI_CPHA_1Edge;
     SPI_InitStruct.SPI_NSS                  = SPI_NSS_Soft;
-    SPI_InitStruct.SPI_BaudRatePrescaler    = SPI_BaudRatePrescaler_16;
+    SPI_InitStruct.SPI_BaudRatePrescaler    = SPI_BaudRatePrescaler_32;
     SPI_InitStruct.SPI_FirstBit             = SPI_FirstBit_MSB;
     SPI_InitStruct.SPI_CRCPolynomial        = 10;
     SPI_Init(SPI1, &SPI_InitStruct);
@@ -78,7 +79,7 @@ void BoardInit(void)
 {
     HUKE_RCC_Init();
     HUKE_GPIO_Init();
-    // HUKE_SPI_Init();
+    HUKE_SPI_Init();
 
     HUKE_SysTick_Init();
 }

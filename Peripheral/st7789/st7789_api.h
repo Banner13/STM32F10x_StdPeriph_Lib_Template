@@ -31,14 +31,17 @@
 #define ST7789_BLK_RESET            GPIO_ResetBits(GPIOA, GPIO_Pin_4);
 
 /* if use gpio-spi */
-#define ST7789_USING_SPI        0
+#define ST7789_USING_SPI        1
 #if ST7789_USING_SPI
     // nothing to do
     #define ST7789_SPI_Write(data_ptr,size) do { \
                                                     uint32_t index = 0; \
                                                     while (index < size) {  \
                                                         while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET); \
-                                                        SPI_I2S_SendData(SPI1, *(data_ptr+index));index++;} \
+                                                        SPI_I2S_SendData(SPI1, *(data_ptr+index));  \
+                                                        while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);    \
+                                                        SPI_I2S_ReceiveData(SPI1);  \
+                                                        index++;} \
                                                 } while(0);
 #else
     #define ST7789_SCK_H        GPIO_SetBits(GPIOA, GPIO_Pin_5);
