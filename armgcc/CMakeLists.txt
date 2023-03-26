@@ -40,13 +40,13 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 )
 
 set(CMAKE_MODULE_PATH
-    ${SdkRootDirPath}/ST_Lib
+    ${SdkRootDirPath}/Ext_Lib
     ${SdkRootDirPath}/Project
     ${SdkRootDirPath}/Peripheral
 )
 
 # include modules
-include(device_STM32F103C6_startup)
+include(Ext_Lib)
 include(My_Project)
 include(My_Peripheral)
 
