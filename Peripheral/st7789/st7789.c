@@ -186,20 +186,20 @@ void ST7789Init(void)
 }
 
 void LCD_Fill(unsigned short xsta,unsigned short ysta,unsigned short xend,unsigned short yend,unsigned short color)
-{          
-    char x,y;
-    short int z;
-    int i;
-    x = color>>8;
-    y = color&0xFF;
-    z = (y << 8) | x;
-    char ddata[6144] = {};
-    LCD_Address_Set(xsta,ysta,xend-1,yend-1);
-    wmemset((wchar_t*)ddata, z, sizeof(ddata)/sizeof(wchar_t));
+{
+   char x,y;
+   int i,j;
+   x= color>>8;
+   y= color&0xFF;
+   char ddata[] = {x,y};
+   LCD_Address_Set(xsta,ysta,xend-1,yend-1);
 
-    for(i=0;i<18;i++)
-    {
-        ST7789_IOCTL(WRITE_DATA, ddata, sizeof(ddata));
-    }
+   for(i=ysta;i<yend;i++)
+   {                                                           
+       for(j=xsta;j<xend;j++)
+       {
+           ST7789_IOCTL(WRITE_DATA, ddata, sizeof(ddata));
+       }
+   } 
 
 }

@@ -38,7 +38,7 @@
                                                     uint32_t index = 0; \
                                                     while (index < size) {  \
                                                         while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET); \
-                                                        SPI_I2S_SendData(SPI1, *(data_ptr+index));  \
+                                                        SPI_I2S_SendData(SPI1, *(uint8_t*)(data_ptr+index));  \
                                                         while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);    \
                                                         SPI_I2S_ReceiveData(SPI1);  \
                                                         index++;} \
@@ -54,7 +54,7 @@
                     while (index < size) {  \
                     for(int i = 0; i < 8; i++) {    \
                         ST7789_SCK_L;   \
-                        if ((*(data_ptr + index) << i) & 0x80) {ST7789_SDA_H;}   \
+                        if ((*(uint8_t*)(data_ptr + index) << i) & 0x80) {ST7789_SDA_H;}   \
                         else {ST7789_SDA_L;}  \
                         ST7789_SCK_H;}  \
                         index++;}    \

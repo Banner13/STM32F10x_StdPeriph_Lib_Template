@@ -3,29 +3,26 @@
 /* *****************************************************************************
  *  include
  * ****************************************************************************/
-#include "htime.h"
+#include "st7789_api.h"
 
 /* *****************************************************************************
  *  golbal variables
  * ****************************************************************************/
-volatile uint32_t g_huke_sysTick;
+
 
 /* *****************************************************************************
  *  code
  * ****************************************************************************/
-static inline void SetSysTick(uint32_t t) {g_huke_sysTick = t;}
-static inline uint32_t GetSysTick(void) {return g_huke_sysTick;}
-
-void DelayMs(uint32_t t)
+void DisplayInit(void)
 {
-	SetSysTick(t);
-	while (0 != GetSysTick()) {};
+    ST7789Init();
 }
 
-void Delay(uint32_t t)
+void DisplayTest(void)
 {
-	SetSysTick(t * 1000);
-	while (0 != GetSysTick()) {};
+    LCD_Fill(0,0,LCD_W,LCD_H,WHITE);
+    LCD_Fill(0,0,LCD_W,LCD_H,BLACK);
 }
+
 
 
