@@ -105,7 +105,7 @@
   macro can be commented to reduce code size.
 */
 #ifndef U8G2_WITHOUT_INTERSECTION
-#define U8G2_WITH_INTERSECTION
+//#define U8G2_WITH_INTERSECTION
 #endif
 
 
@@ -579,6 +579,7 @@ uint8_t *u8g2_m_30_20_f(uint8_t *page_cnt);
 uint8_t *u8g2_m_32_16_1(uint8_t *page_cnt);
 uint8_t *u8g2_m_32_16_2(uint8_t *page_cnt);
 uint8_t *u8g2_m_32_16_f(uint8_t *page_cnt);
+uint8_t *u8g2_m_40_20_2(uint8_t *page_cnt);
 uint8_t *u8g2_m_40_30_1(uint8_t *page_cnt);
 uint8_t *u8g2_m_40_30_2(uint8_t *page_cnt);
 uint8_t *u8g2_m_40_30_f(uint8_t *page_cnt);
@@ -1370,6 +1371,7 @@ void u8g2_Setup_st75320_jlx320240_f(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x
 void u8g2_Setup_st75320_i2c_jlx320240_1(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
 void u8g2_Setup_st75320_i2c_jlx320240_2(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
 void u8g2_Setup_st75320_i2c_jlx320240_f(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
+void u8g2_Setup_st7789_320x172_1(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
 void u8g2_Setup_nt7534_tg12864r_1(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
 void u8g2_Setup_nt7534_tg12864r_2(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
 void u8g2_Setup_nt7534_tg12864r_f(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
