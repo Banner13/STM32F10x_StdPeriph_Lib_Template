@@ -203,3 +203,8 @@ void LCD_Fill(unsigned short xsta,unsigned short ysta,unsigned short xend,unsign
    } 
 
 }
+
+void LCD_Dot(unsigned short x,unsigned short y,unsigned short color)
+{
+    LCD_Fill(x, y, x+1, y+1, color);
+}

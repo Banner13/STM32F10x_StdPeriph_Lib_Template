@@ -62,7 +62,8 @@ Purpose     : Display controller initialization
 //
 // Define the available number of bytes available for the GUI
 //
-#define GUI_NUMBYTES  0x200000
+#define GUI_NUMBYTES  (1024*2)
+#define GUI_BLOCKSIZE (0X80)
 
 /*********************************************************************
 *
@@ -90,6 +91,7 @@ void GUI_X_Config(void) {
   //
   // Set default font
   //
+  GUI_ALLOC_SetAvBlockSize(GUI_BLOCKSIZE);
   GUI_SetDefaultFont(GUI_FONT_6X8);
 }
 

@@ -6,10 +6,10 @@ int main(void)
 {
     BoardInit();
     DisplayInit();
-
+    DisplayTest();
     while(1)
     {
-        DisplayTest();
+        
     }
 
     return 0;

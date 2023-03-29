@@ -1,5 +1,6 @@
 .cproject
 .project
 .settings
+.vscode
 armgcc/flash_debug
 armgcc/temp_build

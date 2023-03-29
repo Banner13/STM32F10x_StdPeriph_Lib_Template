@@ -95,5 +95,5 @@ typedef enum {
     #define RTNA_V  ((10000000 / (LCD_FrameRate * 344) - 250) / 16)
 #endif
 
-
+int ST7789_IOCTL(ST7789_CMD cmd, char *data, size_t size);
 #endif  // ST7789_H

@@ -75,11 +75,17 @@ static inline void HUKE_SysTick_Init()
     }
 }
 
+static inline void HUKE_CRC_Init()
+{
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_CRC, ENABLE);
+}
+
 void BoardInit(void)
 {
     HUKE_RCC_Init();
     HUKE_GPIO_Init();
     HUKE_SPI_Init();
+    HUKE_CRC_Init();
 
     HUKE_SysTick_Init();
 }

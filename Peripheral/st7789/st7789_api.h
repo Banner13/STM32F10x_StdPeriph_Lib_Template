@@ -63,11 +63,11 @@
 /*                              User API define end                           */
 
 #if ((USE_HORIZONTAL == 0) || (USE_HORIZONTAL == 1))
-    #define LCD_W 172	
-    #define LCD_H 320
+    #define LCD_ST7789_W 172	
+    #define LCD_ST7789_H 320
 #else
-    #define LCD_W 320
-    #define LCD_H 172
+    #define LCD_ST7789_W 320
+    #define LCD_ST7789_H 172
 #endif
 
 /* Init Config */
@@ -136,6 +136,7 @@
 /*                            api  prototype                                  */
 void ST7789Init(void);
 void LCD_Fill(unsigned short xsta,unsigned short ysta,unsigned short xend,unsigned short yend,unsigned short color);
+void LCD_Dot(unsigned short x,unsigned short y,unsigned short color);
 #endif  // ST7789_API_H
 
 

@@ -54,6 +54,7 @@ Purpose     : Template driver, could be used as starting point for new
 
 #include <stddef.h>
 
+#include "st7789_api.h"
 #include "LCD_Private.h"
 #include "GUI_Private.h"
 #include "LCD_ConfDefaults.h"
@@ -159,6 +160,7 @@ static void _SetPixelIndex(GUI_DEVICE * pDevice, int x, int y, int PixelIndex) {
       //
       // TBD by customer...
       //
+      LCD_Dot(x, y, PixelIndex);
     }
     #if (LCD_MIRROR_X == 0) && (LCD_MIRROR_Y == 0) && (LCD_SWAP_XY == 0)
       #undef xPhys
@@ -225,23 +227,7 @@ static void _XorPixel(GUI_DEVICE * pDevice, int x, int y) {
 *       _FillRect
 */
 static void _FillRect(GUI_DEVICE * pDevice, int x0, int y0, int x1, int y1) {
-  LCD_PIXELINDEX PixelIndex;
-  int x;
-
-  PixelIndex = LCD__GetColorIndex();
-  if (GUI_pContext->DrawMode & LCD_DRAWMODE_XOR) {
-    for (; y0 <= y1; y0++) {
-      for (x = x0; x <= x1; x++) {
-        _XorPixel(pDevice, x, y0);
-      }
-    }
-  } else {
-    for (; y0 <= y1; y0++) {
-      for (x = x0; x <= x1; x++) {
-        _SetPixelIndex(pDevice, x, y0, PixelIndex);
-      }
-    }
-  }
+  LCD_Fill(x0, y0, x1, y1, LCD_COLORINDEX);
 }
 
 /*********************************************************************
