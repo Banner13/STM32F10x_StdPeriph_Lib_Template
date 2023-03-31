@@ -50,11 +50,11 @@ Purpose     : Display controller configuration (single layer)
   *
   ******************************************************************************
   */
-
+#include <stddef.h>
 #include "GUI.h"
 #include "GUIDRV_FlexColor.h"
 
-#include "st7789.h"
+#include "st7789_api.h"
 /*********************************************************************
 *
 *       Layer configuration (to be modified)
@@ -65,8 +65,8 @@ Purpose     : Display controller configuration (single layer)
 //
 // Physical display size
 //
-#define XSIZE_PHYS  172 // To be adapted to x-screen size
-#define YSIZE_PHYS  320 // To be adapted to y-screen size
+#define XSIZE_PHYS  LCD_ST7789_W // To be adapted to x-screen size
+#define YSIZE_PHYS  LCD_ST7789_H // To be adapted to y-screen size
 
 /*********************************************************************
 *
@@ -106,9 +106,9 @@ Purpose     : Display controller configuration (single layer)
 * Function description:
 *   Sets display register
 */
-static void LcdWriteReg(U16 Data) {
+void LcdWriteReg(U16 Data) {
   // ... TBD by user
-  ST7789_IOCTL(Data, NULL, 0);
+  LCD_CTRL(Data, NULL, 0);
 }
 
 /********************************************************************
@@ -118,9 +118,9 @@ static void LcdWriteReg(U16 Data) {
 * Function description:
 *   Writes a value to a display register
 */
-static void LcdWriteData(U16 Data) {
+void LcdWriteData(U16 Data) {
   // ... TBD by user
-  ST7789_IOCTL(WRITE_DATA, &Data, sizeof(Data));
+  LCD_CTRL(0x00, (char*)&Data, sizeof(Data));
 }
 
 /********************************************************************
@@ -130,13 +130,13 @@ static void LcdWriteData(U16 Data) {
 * Function description:
 *   Writes multiple values to a display register.
 */
-static void LcdWriteDataMultiple(U16 * pData, int NumItems) {
+void LcdWriteDataMultiple(U16 * pData, int NumItems) {
   /*
   while (NumItems--) {
     // ... TBD by user
   }
   */
-  ST7789_IOCTL(WRITE_DATA, pData, NumItems*2);
+  LCD_CTRL(0x00, (char*)pData, NumItems*(sizeof(U16)/sizeof(char)));
 }
 
 /********************************************************************
@@ -146,7 +146,7 @@ static void LcdWriteDataMultiple(U16 * pData, int NumItems) {
 * Function description:
 *   Reads multiple values from a display register.
 */
-static void LcdReadDataMultiple(U16 * pData, int NumItems) {
+void LcdReadDataMultiple(U16 * pData, int NumItems) {
   while (NumItems--) {
     // ... TBD by user
   }

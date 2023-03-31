@@ -27,9 +27,9 @@ void DisplayTest(void)
     GUI_SetColor(GUI_YELLOW);
     GUI_Clear();
     GUI_SetFont(&GUI_Font24_ASCII);
-    GUI_DispStringAt("Hello Word!",0,0);
+    GUI_DispStringAt("Hello Word!",5,5);
     GUI_FillRoundedRect(5,5,100,100,25);//在指定位置绘制填充的圆角矩形
-    GUI_DispStringAt("huke 2023",5, 200);
+    GUI_DispStringAt("huke 2023",200,5);
 }
 
 
