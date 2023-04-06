@@ -43,12 +43,14 @@ set(CMAKE_MODULE_PATH
     ${SdkRootDirPath}/Ext_Lib
     ${SdkRootDirPath}/Project
     ${SdkRootDirPath}/Peripheral
+    ${SdkRootDirPath}/Algorithm
 )
 
 # include modules
 include(Ext_Lib)
 include(My_Project)
 include(My_Peripheral)
+include(Algorithm)
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 

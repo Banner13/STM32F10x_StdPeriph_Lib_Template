@@ -3,35 +3,37 @@
 /* *****************************************************************************
  *  include
  * ****************************************************************************/
-#include "htime.h"
+#include "kalman.h"
 
 /* *****************************************************************************
  *  golbal variables
  * ****************************************************************************/
-volatile uint32_t g_huke_sysTick;
+
 
 /* *****************************************************************************
  *  code
  * ****************************************************************************/
-static inline void SetSysTick(uint32_t t) {g_huke_sysTick = t;}
-static inline uint32_t GetSysTick(void) {return g_huke_sysTick;}
 
-inline void DelayUs(uint32_t t)
+inline float GetKalmanGain(float meaE, float estE)
 {
-    SetSysTick(t);
-    while (0 != GetSysTick()) {};
+    return (estE/(meaE+estE));
 }
 
-inline void DelayMs(uint32_t t)
+inline float GetKalmanEstValue(float meaV, float estV, float gain)
 {
-    while (t--)
-        DelayUs(1000);
+    return (estV + gain * (meaV - estV));
 }
 
-inline void DelayS(uint32_t t)
+inline float UpdateEest(float lastEest, float gain)
 {
-    while (t--)
-        DelayMs(1000);
+    return ((1 - gain) * lastEest);
 }
 
+inline void KalmanProcess(float meaV, float meaE, float* estV 
+                                , float* estE, float* gain)
+{
+    *gain = GetKalmanGain(meaE, *estE);
+    *estV = GetKalmanEstValue(meaV, *estV, *gain);
+    *estE = UpdateEest(*estE, *gain);
+}
 

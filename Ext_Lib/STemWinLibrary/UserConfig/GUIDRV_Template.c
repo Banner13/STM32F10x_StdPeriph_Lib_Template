@@ -505,7 +505,7 @@ static void _DrawBitLine32BPP(GUI_DEVICE * pDevice, int x, int y, U32 const GUI_
 *
 *       _DrawBitmap
 */
-static void _DrawBitmap(GUI_DEVICE * pDevice, int x0, int y0,
+void _DrawBitmap(GUI_DEVICE * pDevice, int x0, int y0,
                        int xSize, int ySize,
                        int BitsPerPixel, 
                        int BytesPerLine,

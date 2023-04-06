@@ -1,24 +1,28 @@
 #include <stdio.h>
 #include "board.h"
-#include "display.h"
-#include "ps4_handle_api.h"
+#include "aht10.h"
+#include "htime.h"
 
-
+#include <string.h>
 
 int main(void)
 {
-    BoardInit();
-    DisplayInit();
-    DisplayTest();
+    AHT10_t aht10;
+    AHT10_Measure_Result result;
+    static volatile int res = 0;
 
-    PS4_t ps4;
+    BoardInit();
+
+    InitDevice_AHT10(&aht10);
+
     while(1)
     {
-        ps4 = PS4_Test();
+        res = AHT10_IOCTL(&aht10, AHT10_MEASURE, NULL, 0);
 
-        GUI_DispDecAt (ps4.horizontalValue, 180, 50, 8);
-        GUI_DispDecAt (ps4.verticalValue, 180, 90, 8);
+        res = AHT10_IOCTL(&aht10, AHT10_GET_RESULT, (void*)&result, sizeof(result));
+
+        DelayS(2);
     }
 
-    return 0;
+    return res;
 }
