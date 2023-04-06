@@ -1,17 +1,17 @@
-/* huke help time */
-#ifndef HUKE_HTIME_H
-#define HUKE_HTIME_H
+/* kalman process */
+#ifndef HUKE_KALMAN_H
+#define HUKE_KALMAN_H
 
 /* *****************************************************************************
  *  include
  * ****************************************************************************/
-#include <stdint.h>
+
 
 /* ****************************************************************************
  *  API
  * ************************************************************************** */
-void DelayUs(uint32_t t);
-void DelayMs(uint32_t t);
-void DelayS(uint32_t t);
+void KalmanProcess(float meaV, float meaE, float* estV 
+                            , float* estE, float* gain);
+
 
 #endif // end define
