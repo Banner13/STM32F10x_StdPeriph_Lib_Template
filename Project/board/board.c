@@ -127,7 +127,7 @@ static inline void HUKE_I2C_Init()
     // GPIO_PinRemapConfig(GPIO_Remap_I2C1, ENABLE);
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_SetBits(GPIOB, GPIO_InitStructure.GPIO_Pin);

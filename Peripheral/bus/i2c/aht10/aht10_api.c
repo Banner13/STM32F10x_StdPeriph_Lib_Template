@@ -23,25 +23,25 @@
 inline void AHT10_SCL_Low(void)
 {
     // user code
-    GPIO_ResetBits(GPIOB, GPIO_Pin_10);
+    GPIO_ResetBits(GPIOB, GPIO_Pin_8);
 }
 
 inline void AHT10_SCL_High(void)
 {
     // user code
-    GPIO_SetBits(GPIOB, GPIO_Pin_10);
+    GPIO_SetBits(GPIOB, GPIO_Pin_8);
 }
 
 inline void AHT10_SDA_Low(void)
 {
     // user code
-    GPIO_ResetBits(GPIOB, GPIO_Pin_11);
+    GPIO_ResetBits(GPIOB, GPIO_Pin_9);
 }
 
 inline void AHT10_SDA_High(void)
 {
     // user code
-    GPIO_SetBits(GPIOB, GPIO_Pin_11);
+    GPIO_SetBits(GPIOB, GPIO_Pin_9);
 }
 
 void AHT10_SDA_Mode_R(void)
@@ -49,7 +49,7 @@ void AHT10_SDA_Mode_R(void)
     // user code
     GPIO_InitTypeDef GPIO_InitStructure;
 
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 
@@ -62,7 +62,7 @@ void AHT10_SDA_Mode_W(void)
     
     GPIO_InitTypeDef GPIO_InitStructure;
 
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 
@@ -84,7 +84,7 @@ inline void AHT10_MsDelay(unsigned int t)
 inline char AHT10_SDA_Read(void)
 {
     // user code
-    return GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11);
+    return GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9);
 }
 
 
